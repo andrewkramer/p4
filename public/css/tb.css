@@ -1,0 +1,65 @@
+/* Custom CSS to override Bootstrap's default styling */
+
+body {
+	background-color: #FAFCFC;
+	font-family: 'Alegreya', serif;
+	color: #1B0035;
+}
+
+h1, h2, h3, h4 {
+	font-family: 'Play', sans-serif;
+}
+
+
+header {
+	padding: 30px;
+	background-color: #DDDDDD;
+	border: 3px groove grey;
+	text-align: center;
+	font-family: serif;
+	color: #99FF99;
+}
+
+aside {
+	height: 100%;
+	padding: 5px 10px;
+	background-color: #DDDDDD;
+	border: 3px groove grey;
+}
+
+main {
+	padding: 0px 20px;
+}
+
+footer {
+	margin-top: 15px;
+	padding: 10px;
+	background-color: #DDDDDD;
+	border: 3px groove grey;
+	text-align: center;
+}
+
+.container {
+	padding: 0px 15px;
+	background-color: #FAFCFC;
+	border: 5px solid #000011;
+}
+
+.nav {
+	padding: 0px 25px;
+}
+
+.password {
+	text-align: center;
+}
+.genResult >h2{
+	font-family: "Arial", sans-serif;
+}
+
+.right {
+	float: right;
+}
+
+.radio {
+	margin-top: 0px;
+}

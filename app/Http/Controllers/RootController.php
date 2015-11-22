@@ -10,6 +10,6 @@ class RootController extends Controller {
     * Responds to requests to GET /
     */
     public function showHome() {
-        return view('welcome');
+        return view('root.showHome');
     }
 }
