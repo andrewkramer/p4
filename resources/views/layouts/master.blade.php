@@ -31,8 +31,19 @@
 
 			<div class="row">
 				<aside class="col-md-2">
-					{{-- Yield page controls --}}
-					@yield('aside')
+					<nav class="row">
+						<ul class="col-md-12">
+							<li><a href="/">Home</a></li>
+							@if (Auth::check())
+								<li><a href="/logout">Logout</a></li>
+							@else
+								<li><a href="/login">Login</a></li>
+								<li><a href="/register">Register</a></li>
+							@endif
+							{{-- Yield page specific controls --}}
+							@yield('aside')
+						</ul>
+					</nav>
 				</aside>
 				<main class="col-md-10">
 					{{-- Yield main content of page --}}

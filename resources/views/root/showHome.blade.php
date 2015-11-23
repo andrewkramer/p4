@@ -1,13 +1,14 @@
 @extends('layouts.master')
 
-@section('aside')
-	<nav class="row">
-		<ul class="col-md-12">
-			<li><a href="/">Login</a></li>
-		</ul>
-	</nav>
+@section('head')
+	<style>
+		.timelineList {
+			margin-top: 15px;
+		}
+	</style>
 @stop
-				
+
+	
 @section('main')
 	<h3>Welcome to Timeline Builder</h3>
 	<p>We are a free service to help you organize dates and events. Just create a timeline project and add as many events, characters, and locations as you need. The application will automatically generate an organized timeline of the information.</p>
@@ -17,5 +18,10 @@
 		<input type="hidden" name="showForm" value="true">
 		<button class="btn btn-primary">New Timeline</button>
 	</form>
-	<p>Display available timelines here<p>
+	<div class='timelineList'>
+		<h4>Current Timeline Projects</h4>
+		@foreach ($timelines as $timeline)
+			<li><a href='/timelines/{{ $timeline->id }}'>{{ $timeline->name }}</a></li>
+		@endforeach
+	</div>
 @stop

@@ -14,22 +14,15 @@ class EventsLocationsTableSeeder extends Seeder
         DB::table('events_locations')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'event' => 0,
-			'location' => 2,
-		]);
-		
-		DB::table('events_locations')->insert([
-			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'event' => 1,
-			'location' => 2,
+			'location' => 3,
 		]);
 		
 		DB::table('events_locations')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'event' => 2,
-			'location' => 0,
+			'location' => 3,
 		]);
 		
 		DB::table('events_locations')->insert([
@@ -37,6 +30,13 @@ class EventsLocationsTableSeeder extends Seeder
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'event' => 3,
 			'location' => 1,
+		]);
+		
+		DB::table('events_locations')->insert([
+			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'event' => 4,
+			'location' => 2,
 		]);
     }
 }

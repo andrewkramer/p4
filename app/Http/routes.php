@@ -12,6 +12,12 @@
 */
 Route::get('/', 'RootController@showHome');
 
+Route::get('/login', 'Auth\AuthController@getLogin'); # Show login form
+Route::post('/login', 'Auth\AuthController@postLogin'); # Process login form
+Route::get('/logout', 'Auth\AuthController@getLogout'); # Process logout
+Route::get('/register', 'Auth\AuthController@getRegister'); # Show registration form
+Route::post('/register', 'Auth\AuthController@postRegister'); # Process registration form
+
 Route::get('/users', 'UsersController@listUsers');
 Route::get('/users/{user_id}', 'UsersController@showUser');
 Route::post('users', 'UsersController@newUser');

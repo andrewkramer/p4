@@ -18,7 +18,7 @@ class EventsTableSeeder extends Seeder
 			'start_date' => '1066-12-25',
 			'end_date' => '1087-09-09',
 			'description' => 'First period of Norman rule in England.',
-			'timeline' => 0,
+			'timeline' => 1,
 		]);
 		
 		DB::table('events')->insert([
@@ -28,7 +28,7 @@ class EventsTableSeeder extends Seeder
 			'start_date' => '1066-12-25',
 			'end_date' => '1100-08-02',
 			'description' => "Expanded England's control to Wales",
-			'timeline' => 0,
+			'timeline' => 1,
 		]);
 		
 		DB::table('events')->insert([
@@ -38,7 +38,7 @@ class EventsTableSeeder extends Seeder
 			'start_date' => '1066-10-14',
 			'end_date' => '1066-10-14',
 			'description' => 'William the Conqueror defeated Harold II.',
-			'timeline' => 1,
+			'timeline' => 2,
 		]);
 		
 		DB::table('events')->insert([
@@ -48,7 +48,7 @@ class EventsTableSeeder extends Seeder
 			'start_date' => '1415-10-25',
 			'end_date' => '1415-10-25',
 			'description' => "Henry V defeated Charles d'Albret",
-			'timeline' => 1,
+			'timeline' => 2,
 		]);
     }
 }

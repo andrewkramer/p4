@@ -15,14 +15,6 @@ class EventsCharactersTableSeeder extends Seeder
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'role' => 'King',
-			'event' => 0,
-			'character' => 0,
-		]);
-		
-		DB::table('events_characters')->insert([
-			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'role' => 'King',
 			'event' => 1,
 			'character' => 1,
 		]);
@@ -30,7 +22,7 @@ class EventsCharactersTableSeeder extends Seeder
 		DB::table('events_characters')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'role' => 'Victor',
+			'role' => 'King',
 			'event' => 2,
 			'character' => 2,
 		]);
@@ -38,15 +30,15 @@ class EventsCharactersTableSeeder extends Seeder
 		DB::table('events_characters')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'role' => 'Loser',
-			'event' => 2,
+			'role' => 'Victor',
+			'event' => 3,
 			'character' => 3,
 		]);
 		
 		DB::table('events_characters')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'role' => 'Victor',
+			'role' => 'Loser',
 			'event' => 3,
 			'character' => 4,
 		]);
@@ -54,9 +46,17 @@ class EventsCharactersTableSeeder extends Seeder
 		DB::table('events_characters')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'role' => 'Loser',
-			'event' => 3,
+			'role' => 'Victor',
+			'event' => 4,
 			'character' => 5,
+		]);
+		
+		DB::table('events_characters')->insert([
+			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'role' => 'Loser',
+			'event' => 4,
+			'character' => 6,
 		]);
     }
 }
