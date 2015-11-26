@@ -16,7 +16,7 @@ class LocationsTableSeeder extends Seeder
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'name' => 'Hastings',
 			'description' => 'Southeast England',
-			'timeline' => 1,
+			'timeline' => 2,
 		]);
 		
 		DB::table('locations')->insert([
@@ -24,7 +24,7 @@ class LocationsTableSeeder extends Seeder
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'name' => 'Agincourt',
 			'description' => 'Northwest France',
-			'timeline' => 1,
+			'timeline' => 2,
 		]);
 		
 		DB::table('locations')->insert([
@@ -32,7 +32,7 @@ class LocationsTableSeeder extends Seeder
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'name' => 'London, England',
 			'description' => 'Capitol of England',
-			'timeline' => 0,
+			'timeline' => 1,
 		]);
     }
 }

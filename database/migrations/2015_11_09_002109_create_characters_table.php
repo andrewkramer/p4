@@ -28,7 +28,9 @@ class CreateCharactersTable extends Migration
 			$table->text('biography');
 			
 			# Foreign Keys
-			$table->integer('timeline');
+			$table->integer('timeline')->unsigned();
+			
+			$table->foreign('timeline')->references('id')->on('timelines');
 			
 			# Log fields
 			$table->integer('created_by');

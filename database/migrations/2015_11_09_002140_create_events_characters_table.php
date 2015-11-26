@@ -25,8 +25,11 @@ class CreateEventsCharactersTable extends Migration
 			$table->string('role');
 			
 			# Foreign Keys
-			$table->integer('event');
-			$table->integer('character');
+			$table->integer('event')->unsigned();
+			$table->integer('character')->unsigned();
+			
+			$table->foreign('event')->references('id')->on('events');
+			$table->foreign('character')->references('id')->on('characters');
 			
 			# Log fields
 			$table->integer('created_by');

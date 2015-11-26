@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<link rel="icon" type="image/png" href="img/favicon.png"/>
+		<link rel="icon" type="/image/png" href="img/favicon.png"/>
 		<title>@yield('title',"Timeline Builder")</title>
 
 		<!-- Import Google Fonts -->
@@ -12,9 +12,9 @@
 		<link href='https://fonts.googleapis.com/css?family=Alegreya' rel='stylesheet' type='text/css'>
 		
 		<!-- Import Bootstrap CSS -->
-		<link href="css/bootstrap.min.css" rel="stylesheet">
+		<link href="/css/bootstrap.min.css" rel="stylesheet">
 		<!-- Import sitewide custom CSS -->
-		<link href="css/tb.css" rel="stylesheet">
+		<link href="/css/tb.css" rel="stylesheet">
 		
 		{{-- Yield page specific css --}}
 		@yield('head')
@@ -25,6 +25,7 @@
 				<div class="row">
 					<div class="col-md-12">
 						<h1>Timeline Builder</h1>
+						<h3>@yield('timelineName')</h3>
 					</div>
 				</div>
 			</header>
@@ -59,7 +60,7 @@
 		<!-- Import jQuery -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 		<!-- Import Bootstrap JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/js/bootstrap.min.js"></script>
 		
 		{{-- Yield page specific scripts --}}
 		@yield('body')

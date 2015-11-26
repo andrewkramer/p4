@@ -24,8 +24,11 @@ class CreateEventsLocationsTable extends Migration
 			# Table Specific Fields
 
 			# Foreign Keys
-			$table->integer('event');
-			$table->integer('location');
+			$table->integer('event')->unsigned();
+			$table->integer('location')->unsigned();
+			
+			$table->foreign('event')->references('id')->on('events');
+			$table->foreign('location')->references('id')->on('locations');
 			
 			# Log fields
 			$table->integer('created_by');

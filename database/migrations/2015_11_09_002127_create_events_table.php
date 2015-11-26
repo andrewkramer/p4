@@ -28,7 +28,9 @@ class CreateEventsTable extends Migration
 			$table->text('description');
 			
 			# Foreign Keys
-			$table->integer('timeline');
+			$table->integer('timeline')->unsigned();
+			
+			$table->foreign('timeline')->references('id')->on('timelines');
 			
 			# Log fields
 			$table->integer('created_by');

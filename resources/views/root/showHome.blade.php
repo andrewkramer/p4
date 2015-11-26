@@ -1,13 +1,5 @@
 @extends('layouts.master')
 
-@section('head')
-	<style>
-		.timelineList {
-			margin-top: 15px;
-		}
-	</style>
-@stop
-
 	
 @section('main')
 	<h3>Welcome to Timeline Builder</h3>
@@ -18,7 +10,7 @@
 		<input type="hidden" name="showForm" value="true">
 		<button class="btn btn-primary">New Timeline</button>
 	</form>
-	<div class='timelineList'>
+	<div class='databaseList'>
 		<h4>Current Timeline Projects</h4>
 		@foreach ($timelines as $timeline)
 			<li><a href='/timelines/{{ $timeline->id }}'>{{ $timeline->name }}</a></li>

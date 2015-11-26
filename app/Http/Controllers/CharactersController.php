@@ -9,15 +9,32 @@ class CharactersController extends Controller {
     /**
     * List all characters /
     */
-    public function listCharacters() {
-        return "List Characters";
+    public function listCharacters($timeline_id) {
+        $characters = \App\Character::where('timeline', '=', $timeline_id)
+			->orderBy('name')
+			->get(); 
+			
+		$timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+
+        return view('characters.listCharacters')
+			->with('characters', $characters)
+			->with('timeline', $timeline);
     }
 	
 	/**
     * Show character /
     */
     public function showCharacter($timeline_id, $character_id) {
-        return "Character " . $character_id . " from timeline " . $timeline_id;
+        $character = \App\Character::where('id', '=', $character_id)
+			->first(); 
+			
+		$timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+
+        return view('characters.showCharacter')
+			->with('character', $character)
+			->with('timeline', $timeline);
     }
 	
 	/**
