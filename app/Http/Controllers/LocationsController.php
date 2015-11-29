@@ -10,7 +10,7 @@ class LocationsController extends Controller {
     * List all Locations /
     */
     public function listLocations($timeline_id) {
-        $locations = \App\Location::where('timeline', '=', $timeline_id)
+        $locations = \App\Location::where('timeline_id', '=', $timeline_id)
 			->orderBy('name')
 			->get(); 
 			

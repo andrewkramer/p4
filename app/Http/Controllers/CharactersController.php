@@ -10,7 +10,7 @@ class CharactersController extends Controller {
     * List all characters /
     */
     public function listCharacters($timeline_id) {
-        $characters = \App\Character::where('timeline', '=', $timeline_id)
+        $characters = \App\Character::where('timeline_id', '=', $timeline_id)
 			->orderBy('name')
 			->get(); 
 			

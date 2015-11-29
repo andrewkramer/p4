@@ -26,9 +26,9 @@ class CreateLocationsTable extends Migration
 			$table->text('description');
 			
 			# Foreign keys
-			$table->integer('timeline')->unsigned();
+			$table->integer('timeline_id')->unsigned();
 			
-			$table->foreign('timeline')->references('id')->on('timelines');
+			$table->foreign('timeline_id')->references('id')->on('timelines');
 			
 			# Log fields
 			$table->integer('created_by');

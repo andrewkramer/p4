@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class EventsCharactersTableSeeder extends Seeder
+class CharacterEventTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,52 +11,52 @@ class EventsCharactersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('events_characters')->insert([
+        DB::table('character_event')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'role' => 'King',
-			'event' => 1,
-			'character' => 1,
+			'event_id' => 1,
+			'character_id' => 1,
 		]);
 		
-		DB::table('events_characters')->insert([
+		DB::table('character_event')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'role' => 'King',
-			'event' => 2,
-			'character' => 2,
+			'event_id' => 2,
+			'character_id' => 2,
 		]);
 		
-		DB::table('events_characters')->insert([
+		DB::table('character_event')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'role' => 'Victor',
-			'event' => 3,
-			'character' => 3,
+			'event_id' => 3,
+			'character_id' => 3,
 		]);
 		
-		DB::table('events_characters')->insert([
+		DB::table('character_event')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'role' => 'Loser',
-			'event' => 3,
-			'character' => 4,
+			'event_id' => 3,
+			'character_id' => 4,
 		]);
 		
-		DB::table('events_characters')->insert([
+		DB::table('character_event')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'role' => 'Victor',
-			'event' => 4,
-			'character' => 5,
+			'event_id' => 4,
+			'character_id' => 5,
 		]);
 		
-		DB::table('events_characters')->insert([
+		DB::table('character_event')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'role' => 'Loser',
-			'event' => 4,
-			'character' => 6,
+			'event_id' => 4,
+			'character_id' => 6,
 		]);
     }
 }

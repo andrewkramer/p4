@@ -11,4 +11,8 @@ class Location extends Model
         # Define an inverse one-to-many relationship.
         return $this->belongsTo('\App\Timeline');
     }
+	
+	public function events() {
+		return $this->belongsToMany('\App\Event')->withTimestamps();
+	}
 }

@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Character extends Model
+class Event extends Model
 {
     public function timeline() {
         # Character belongs to Timeline
@@ -12,9 +12,11 @@ class Character extends Model
         return $this->belongsTo('\App\Timeline');
     }
 	
-	public function events()
-	{
-		# With timetsamps() will ensure the pivot table has its created_at/updated_at fields automatically maintained
-		return $this->belongsToMany('\App\Event')->withTimestamps();
+	public function characters() {
+		return $this->belongsToMany('\App\Character')->withTimestamps();
+	}
+	
+	public function locations() {
+		return $this->belongsToMany('\App\Location')->withTimestamps();
 	}
 }

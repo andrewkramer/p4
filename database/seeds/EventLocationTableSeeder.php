@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class EventsLocationsTableSeeder extends Seeder
+class EventLocationTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -11,32 +11,32 @@ class EventsLocationsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('events_locations')->insert([
+        DB::table('event_location')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'event' => 1,
-			'location' => 3,
+			'event_id' => 1,
+			'location_id' => 3,
 		]);
 		
-		DB::table('events_locations')->insert([
+		DB::table('event_location')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'event' => 2,
-			'location' => 3,
+			'event_id' => 2,
+			'location_id' => 3,
 		]);
 		
-		DB::table('events_locations')->insert([
+		DB::table('event_location')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'event' => 3,
-			'location' => 1,
+			'event_id' => 3,
+			'location_id' => 1,
 		]);
 		
-		DB::table('events_locations')->insert([
+		DB::table('event_location')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-			'event' => 4,
-			'location' => 2,
+			'event_id' => 4,
+			'location_id' => 2,
 		]);
     }
 }

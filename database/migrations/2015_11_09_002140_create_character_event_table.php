@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateEventsLocationsTable extends Migration
+class CreateCharacterEventTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,7 +12,7 @@ class CreateEventsLocationsTable extends Migration
      */
     public function up()
     {
-        Schema::create('events_locations', function (Blueprint $table) {
+        Schema::create('character_event', function (Blueprint $table) {
 			
 			# Incremental Primary Key
 			$table->increments('id');
@@ -20,15 +20,16 @@ class CreateEventsLocationsTable extends Migration
 			# This generates two columns: `created_at` and `updated_at` to
 			# keep track of changes to a row
 			$table->timestamps();
-			
-			# Table Specific Fields
 
-			# Foreign Keys
-			$table->integer('event')->unsigned();
-			$table->integer('location')->unsigned();
+			# Table specific fields
+			$table->string('role');
 			
-			$table->foreign('event')->references('id')->on('events');
-			$table->foreign('location')->references('id')->on('locations');
+			# Foreign Keys
+			$table->integer('event_id')->unsigned();
+			$table->integer('character_id')->unsigned();
+			
+			$table->foreign('event_id')->references('id')->on('events');
+			$table->foreign('character_id')->references('id')->on('characters');
 			
 			# Log fields
 			$table->integer('created_by');
@@ -44,6 +45,6 @@ class CreateEventsLocationsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('events_locations');
+        Schema::drop('character_event');
     }
 }

@@ -17,7 +17,29 @@ class EventsController extends Controller {
     * Show Event /
     */
     public function showEvent($timeline_id, $event_id) {
-        return "Event " . $event_id . " from timeline " . $timeline_id;
+        $event = \App\Event::where('id', '=', $event_id)
+			->first(); 
+			
+		$event_characters = array();
+		foreach($event->characters as $character) {
+			$event_characters[] = $character;
+		}
+		
+		$event_locations = array();
+		foreach($event->locations as $location) {
+			$event_locations[] = $location;
+		}
+		
+
+		$timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+
+
+        return view('events.showEvent')
+			->with('event', $event)
+			->with('event_characters', $event_characters)
+			->with('event_locations', $event_locations)
+			->with('timeline', $timeline);
     }
 	
 	/**

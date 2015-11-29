@@ -17,7 +17,19 @@ class TimelinesController extends Controller {
     * Show timeline /
     */
     public function showTimeline($timeline_id) {
-        return "Timeline " . $timeline_id;
+        $timeline = \App\Timeline::where('id', '=', $event_id)
+			->first(); 
+			
+		$timeline_events = array();
+		foreach($timeline->event as $event) {
+			$timeline_events[] = $event;
+		}
+
+
+        return view('timelines.showTimeline')
+			->with('timeline', $timeline);
+			->with('timeline_events', $timeline_events)
+    }
     }
 	
 	/**

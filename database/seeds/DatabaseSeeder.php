@@ -18,8 +18,8 @@ class DatabaseSeeder extends Seeder
 		$this->call(CharactersTableSeeder::class);
 		$this->call(LocationsTableSeeder::class);
 		$this->call(EventsTableSeeder::class);
-		$this->call(EventsCharactersTableSeeder::class);
-		$this->call(EventsLocationsTableSeeder::class);
+		$this->call(CharacterEventTableSeeder::class);
+		$this->call(EventLocationTableSeeder::class);
 
         Model::reguard();
     }
