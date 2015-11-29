@@ -16,6 +16,7 @@ class TimelinesTableSeeder extends Seeder
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'name' => 'British Monarchs',
 			'description' => 'Displays all British monarchs from 1066A.D. to present day.',
+			'user_id' => 2,
 		]);
 		
 		DB::table('timelines')->insert([
@@ -23,6 +24,7 @@ class TimelinesTableSeeder extends Seeder
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
 			'name' => 'Medieval Battles',
 			'description' => 'Displays significant battles in Medieval history.',
+			'user_id' => 1,
 		]);
     }
 }

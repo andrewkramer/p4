@@ -26,6 +26,7 @@ class CreateTimelinesTable extends Migration
 			$table->text('description');
 			
 			# Foreign Keys
+			$table->integer('user_id')->unsigned();
 			
 			# Log Fields
 			$table->integer('created_by');

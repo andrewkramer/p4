@@ -11,7 +11,12 @@
 		<button class="btn btn-primary">New Timeline</button>
 	</form>
 	<div class='databaseList'>
-		<h4>Current Timeline Projects</h4>
+		<h4>Your Timeline Projects</h4>
+		@foreach ($users_timelines as $users_timeline)
+			<li><a href='/timelines/{{ $timeline->id }}'>{{ $users_timelines->name }}</a></li>
+		@endforeach
+		
+		<h4>All Timeline Projects</h4>
 		@foreach ($timelines as $timeline)
 			<li><a href='/timelines/{{ $timeline->id }}'>{{ $timeline->name }}</a></li>
 		@endforeach

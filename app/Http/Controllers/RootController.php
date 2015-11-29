@@ -12,7 +12,13 @@ class RootController extends Controller {
     public function showHome() {
 		
 		$timelines = \App\Timeline::all();
+		
+		$user = \Auth::user();
+		$users_timelines = \App\Timeline::where('user_id', '=', $user)
+			->get(); 
 
-        return view('root.showHome')->with('timelines', $timelines);
+        return view('root.showHome')
+			->with('timelines', $timelines)
+			->with('users_timelines', $users_timelines);
     }
 }
