@@ -3,6 +3,13 @@
 	
 @section('main')
 	<h3>{{ $event->name }}</h3>
+	@if (Auth::check())
+		<form method="POST" action="/timelines/{{ $timeline->id }}/events/{{ $event->id }}">
+			<input type='hidden' name='_token' value='{{ csrf_token() }}'>
+			<input type="hidden" name="showForm" value="true">
+			<button class="btn btn-primary">Edit Event</button>
+		</form>
+	@endif
 	<h4>{{ $event->start_date }} - {{ $event->end_date }}</h4>
 	<p>
 		Location: 

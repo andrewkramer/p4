@@ -109,7 +109,37 @@ class EventsController extends Controller {
     /**
     * Edit Location /
     */
-    public function editEvent($timeline_id, $event_id) {
-        return "Edit Event " . $event_id . " from timeline " . $timeline_id;
+    public function editEvent($timeline_id, $event_id, Request $request) {
+        $timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+			
+		$event = \App\Event::where('id', '=', $event_id)
+			->first();
+		
+		if ($event) {
+			
+			if ($request -> input('showForm') == 'true') {
+				return view('events.editEvent')
+					->with('showForm', 'true')
+					->with('event', $event)
+					->with('timeline', $timeline);
+			} else {	
+				
+					$event->name = $request -> input('name');
+					$event->start_date = $request -> input('start_date');
+					$event->end_date = $request -> input('end_date');
+					$event->description = $request -> input('description');
+
+					$event->save();
+
+					return view('events.editEvent')
+						->with('showForm', 'false')
+						->with('event', $event)
+						->with('timeline', $timeline);
+				
+			}
+		} else {
+			return "Update failed. Event does not exist.";
+		}
     }
 }

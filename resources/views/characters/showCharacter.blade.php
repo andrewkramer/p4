@@ -3,6 +3,13 @@
 	
 @section('main')
 	<h3>{{ $character->name }}</h3>
+	@if (Auth::check())
+		<form method="POST" action="/timelines/{{ $timeline->id }}/characters/{{ $character->id }}">
+			<input type='hidden' name='_token' value='{{ csrf_token() }}'>
+			<input type="hidden" name="showForm" value="true">
+			<button class="btn btn-primary">Edit Character</button>
+		</form>
+	@endif
 	<h4>{{ $character->race }}<h4>
 	<p>{{ $character->biography }}</p>
 	<div class='row auditInfo'>

@@ -70,7 +70,36 @@ class CharactersController extends Controller {
     /**
     * Edit character /
     */
-    public function editCharacter($timeline_id, $character_id) {
-        return "Edit Character " . $character_id . " from timeline " . $timeline_id;
+    public function editCharacter($timeline_id, $character_id, Request $request) {
+        $timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+			
+		$character = \App\Character::where('id', '=', $character_id)
+			->first();
+		
+		if ($character) {
+			
+			if ($request -> input('showForm') == 'true') {
+				return view('characters.editCharacter')
+					->with('showForm', 'true')
+					->with('character', $character)
+					->with('timeline', $timeline);
+			} else {	
+				
+					$character->name = $request -> input('name');
+					$character->race = $request -> input('race');
+					$character->biography = $request -> input('biography');
+
+					$character->save();
+
+					return view('characters.editCharacter')
+						->with('showForm', 'false')
+						->with('character', $character)
+						->with('timeline', $timeline);
+				
+			}
+		} else {
+			return "Update failed. Character does not exist.";
+		}
     }
 }

@@ -3,6 +3,13 @@
 	
 @section('main')
 	<h3>{{ $location->name }}</h3>
+	@if (Auth::check())
+		<form method="POST" action="/timelines/{{ $timeline->id }}/locations/{{ $location->id }}">
+			<input type='hidden' name='_token' value='{{ csrf_token() }}'>
+			<input type="hidden" name="showForm" value="true">
+			<button class="btn btn-primary">Edit Location</button>
+		</form>
+	@endif
 	<p>{{ $location->description }}</p>
 	<div class='row auditInfo'>
 		<div class='col-md-6'>

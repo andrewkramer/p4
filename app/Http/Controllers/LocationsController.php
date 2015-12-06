@@ -69,7 +69,35 @@ class LocationsController extends Controller {
     /**
     * Edit Location /
     */
-    public function editLocation($timeline_id, $location_id) {
-        return "Edit Location " . $location_id . " from timeline " . $timeline_id;
+    public function editLocation($timeline_id, $location_id, Request $request) {
+        $timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+			
+		$location = \App\Location::where('id', '=', $location_id)
+			->first();
+		
+		if ($location) {
+			
+			if ($request -> input('showForm') == 'true') {
+				return view('locations.editLocation')
+					->with('showForm', 'true')
+					->with('location', $location)
+					->with('timeline', $timeline);
+			} else {	
+				
+					$location->name = $request -> input('name');
+					$location->description = $request -> input('description');
+
+					$location->save();
+
+					return view('locations.editLocation')
+						->with('showForm', 'false')
+						->with('location', $location)
+						->with('timeline', $timeline);
+				
+			}
+		} else {
+			return "Update failed. Location does not exist.";
+		}
     }
 }
