@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class EventsController extends Controller {
 
@@ -45,8 +46,64 @@ class EventsController extends Controller {
 	/**
     * Create a new Event /
     */
-    public function newEvent() {
-        return "New Event";
+    public function newEvent($timeline_id, Request $request) {
+        $timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+		
+		if ($request -> input('showForm') == 'true') {
+			$characters = \App\Character::where('timeline_id', '=', $timeline_id)
+				->orderBy('name')
+				->get(); 
+				
+			$locations = \App\Location::where('timeline_id', '=', $timeline_id)
+				->orderBy('name')
+				->get(); 
+				
+			return view('events.newEvent')
+				->with('showForm', 'true')
+				->with('characters', $characters)
+				->with('locations', $locations)
+				->with('timeline', $timeline);
+		} else {
+			#if ( \Auth::check() ) {
+			#	$user = \Auth::user();
+				$event = new \App\Event();
+
+				$event->name = $request -> input('name');
+				$event->start_date = $request -> input('start_date');
+				$event->end_date = $request -> input('end_date');
+				$event->description = $request -> input('description');
+				$event->timeline_id = $timeline_id;
+			#	$event->created_by = $user -> name;
+
+				$event->save();
+				
+				# Attach Characters to the event
+				for ($i=1; $i<5; $i++) {
+					$character_input = $request -> input('character'.$i);
+					if ($character_input != 'Choose a Character') {
+							$character = \App\Character::where('name','LIKE',$character_input)->first();
+							$event->characters()->save($character);
+					}
+				}
+				
+				# Attach Locations to the event
+				for ($i=1; $i<3; $i++) {
+					$location_input = $request -> input('location'.$i);
+					if ($location_input != 'Choose a Location') {
+							$location = \App\Location::where('name','LIKE',$location_input)->first();
+							$event->locations()->save($location);
+					}
+				}
+
+				return view('events.newEvent')
+					->with('showForm', 'false')
+					->with('event', $event)
+					->with('timeline', $timeline);
+			#} else {
+			#		return 'Access Denied';
+			#}
+		}
     }
 
     /**

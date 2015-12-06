@@ -16,6 +16,13 @@
 	<p>{{ $timeline->description }}</p>
 	
 	<h4>Events:</h4>
+	@if (Auth::check())
+		<form method="POST" action="/timelines/{{ $timeline->id }}/events">
+			<input type='hidden' name='_token' value='{{ csrf_token() }}'>
+			<input type="hidden" name="showForm" value="true">
+			<button class="btn btn-primary">New Event</button>
+		</form>
+	@endif
 	@foreach ($timeline_events as $event)
 		<p>{{ $event->start_date }} - {{ $event->end_date }}</p>
 		<div class="eventInfo">
