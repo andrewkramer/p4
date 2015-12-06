@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class LocationsController extends Controller {
 
@@ -40,8 +41,29 @@ class LocationsController extends Controller {
 	/**
     * Create a new Location /
     */
-    public function newLocation() {
-        return "New Location";
+    public function newLocation($timeline_id, Request $request) {
+        $timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+		
+		if ($request -> input('showForm') == 'true') {
+			return view('locations.newLocation')
+				->with('showForm', 'true')
+				->with('timeline', $timeline);
+		} else {
+			
+			$location = new \App\Location();
+
+			$location->name = $request -> input('name');
+			$location->description = $request -> input('description');
+			$location->timeline_id = $timeline_id;
+
+			$location->save();
+
+			return view('locations.newLocation')
+				->with('showForm', 'false')
+				->with('location', $location)
+				->with('timeline', $timeline);
+		}
     }
 
     /**

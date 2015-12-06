@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class TimelinesController extends Controller {
 
@@ -34,8 +35,24 @@ class TimelinesController extends Controller {
 	/**
     * Create a new timeline /
     */
-    public function newTimeline() {
-        return "New Timeline";
+    public function newTimeline(Request $request) {
+		
+		if ($request -> input('showForm') == 'true') {
+			return view('timelines.newTimeline')
+				->with('showForm', 'true');
+		} else {
+			
+			$timeline = new \App\Timeline();
+
+			$timeline->name = $request -> input('name');
+			$timeline->description = $request -> input('description');
+
+			$timeline->save();
+
+			return view('timelines.newTimeline')
+				->with('showForm', 'false')
+				->with('timeline', $timeline);
+		}
     }
 
     /**

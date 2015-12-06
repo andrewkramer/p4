@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class CharactersController extends Controller {
 
@@ -40,8 +41,30 @@ class CharactersController extends Controller {
 	/**
     * Create a new character /
     */
-    public function newCharacter() {
-        return "New Character";
+    public function newCharacter($timeline_id, Request $request) {
+		$timeline = \App\Timeline::where('id', '=', $timeline_id)
+			->first();
+		
+		if ($request -> input('showForm') == 'true') {
+			return view('characters.newCharacter')
+				->with('showForm', 'true')
+				->with('timeline', $timeline);
+		} else {
+			
+			$character = new \App\Character();
+
+			$character->name = $request -> input('name');
+			$character->race = $request -> input('race');
+			$character->biography = $request -> input('biography');
+			$character->timeline_id = $timeline_id;
+
+			$character->save();
+
+			return view('characters.newCharacter')
+				->with('showForm', 'false')
+				->with('character', $character)
+				->with('timeline', $timeline);
+		}
     }
 
     /**
