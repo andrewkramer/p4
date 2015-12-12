@@ -6,13 +6,6 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class TimelinesController extends Controller {
-
-    /**
-    * List all timelines /
-    */
-    public function listTimelines() {
-        return "List Timelines";
-    }
 	
 	/**
     * Show timeline /

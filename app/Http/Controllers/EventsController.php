@@ -7,12 +7,6 @@ use Illuminate\Http\Request;
 
 class EventsController extends Controller {
 
-    /**
-    * List all Events /
-    */
-    public function listEvents() {
-        return "List Events";
-    }
 	
 	/**
     * Show Event /

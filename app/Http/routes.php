@@ -18,12 +18,6 @@ Route::get('/logout', 'Auth\AuthController@getLogout'); # Process logout
 Route::get('/register', 'Auth\AuthController@getRegister'); # Show registration form
 Route::post('/register', 'Auth\AuthController@postRegister'); # Process registration form
 
-Route::get('/users', 'UsersController@listUsers');
-Route::get('/users/{user_id}', 'UsersController@showUser');
-Route::post('users', 'UsersController@newUser');
-Route::post('/users/{user_id}', 'UsersController@editUser');
-
-Route::get('/timelines', 'TimelinesController@listTimelines');
 Route::get('/timelines/{timeline_id}', 'TimelinesController@showTimeline');
 Route::post('timelines', 'TimelinesController@newTimeline');
 Route::post('/timelines/{timeline_id}', 'TimelinesController@editTimeline');
@@ -38,7 +32,6 @@ Route::get('/timelines/{timeline_id}/locations/{location_id}', 'LocationsControl
 Route::post('timelines/{timeline_id}/locations/', 'LocationsController@newLocation');
 Route::post('/timelines/{timeline_id}/locations/{location_id}', 'LocationsController@editLocation');
 
-Route::get('/timelines/{timeline_id}/events/', 'EventsController@listEvents');
 Route::get('/timelines/{timeline_id}/events/{event_id}', 'EventsController@showEvent');
 Route::post('timelines/{timeline_id}/events/', 'EventsController@newEvent');
 Route::post('/timelines/{timeline_id}/events/{event_id}', 'EventsController@editEvent');
