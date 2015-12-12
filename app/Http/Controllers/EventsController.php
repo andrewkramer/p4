@@ -68,11 +68,11 @@ class EventsController extends Controller {
 			if ( \Auth::check() ) {
 				
 				// Validate the request data
-				//$this->validate($request, [
-				//	'name' => 'required',
-				//	'start_date' => 'required',
-				//	'end_date' => 'required',
-				//]);
+				$this->validate($request, [
+					'name' => 'required',
+					'start_date' => 'required|date_format:Y#m#d',
+					'end_date' => 'required|date_format:Y#m#d',
+				]);
 				
 				$user = \Auth::user();
 				$event = new \App\Event();
@@ -160,11 +160,11 @@ class EventsController extends Controller {
 			} else { // Else submit form
 
 				// Validate the request data
-				//$this->validate($request, [
-				//	'name' => 'required',
-				//	'start_date' => 'required|date',
-				//	'end_date' => 'required|date',
-				//]);
+				$this->validate($request, [
+					'name' => 'required',
+					'start_date' => 'required|date_format:Y#m#d',
+					'end_date' => 'required|date_format:Y#m#d',
+				]);
 			
 					$user = \Auth::user();
 				

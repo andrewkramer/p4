@@ -19,6 +19,7 @@ Route::get('/logout/confirm', 'Auth\AuthController@confirmLogout'); # Confirm lo
 Route::get('/register', 'Auth\AuthController@getRegister'); # Show registration form
 Route::post('/register', 'Auth\AuthController@postRegister'); # Process registration form
 
+Route::get('/timelines', 'RootController@showHome');
 Route::get('/timelines/{timeline_id}', 'TimelinesController@showTimeline');
 Route::post('timelines', 'TimelinesController@newTimeline');
 Route::post('/timelines/{timeline_id}', 'TimelinesController@editTimeline');
@@ -33,6 +34,7 @@ Route::get('/timelines/{timeline_id}/locations/{location_id}', 'LocationsControl
 Route::post('timelines/{timeline_id}/locations/', 'LocationsController@newLocation');
 Route::post('/timelines/{timeline_id}/locations/{location_id}', 'LocationsController@editLocation');
 
+Route::get('timelines/{timeline_id}/events/', 'TimelinesController@showTimeline');
 Route::get('/timelines/{timeline_id}/events/{event_id}', 'EventsController@showEvent');
 Route::post('timelines/{timeline_id}/events/', 'EventsController@newEvent');
 Route::post('/timelines/{timeline_id}/events/{event_id}', 'EventsController@editEvent');

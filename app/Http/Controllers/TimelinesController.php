@@ -40,9 +40,9 @@ class TimelinesController extends Controller {
 		} else {
 			if ( \Auth::check() ) {
 				// Validate the request data
-				//$this->validate($request, [
-				//	'name' => 'required',
-				//]);
+				$this->validate($request, [
+					'name' => 'required',
+				]);
 				
 				$timeline = new \App\Timeline();
 				$user = \Auth::user();

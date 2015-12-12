@@ -6,6 +6,14 @@
 	<p>We are a free service to help you organize dates and events. Just create a timeline project and add as many events, characters, and locations as you need. The application will automatically generate an organized timeline of the information.</p>
 	<p>Create as many projects as you need, or contribute to public projects. Create an account and create a new project now to get started.</p>
 	
+	@if(count($errors) > 0)
+		<h4 class="submit_error">Submit failed</h4>
+		<ul class="submit_error">
+			@foreach ($errors->all() as $error)
+				<li>{{ $error }}</li>
+			@endforeach
+		</ul>
+	@endif
 	@if (Auth::check())
 		<form method="POST" action="/timelines">
 			<input type='hidden' name='_token' value='{{ csrf_token() }}'>
