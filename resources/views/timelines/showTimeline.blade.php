@@ -13,6 +13,13 @@
 	
 @section('main')
 	<h3>{{ $timeline->name }}</h3>
+	@if (Auth::check())
+		<form method="POST" action="/timelines/{{ $timeline->id }}">
+			<input type='hidden' name='_token' value='{{ csrf_token() }}'>
+			<input type="hidden" name="showForm" value="true">
+			<button class="btn btn-primary">Edit Timeline</button>
+		</form>
+	@endif
 	<p>{{ $timeline->description }}</p>
 	
 	<h4>Events:</h4>
