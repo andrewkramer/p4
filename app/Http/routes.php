@@ -15,7 +15,7 @@ Route::get('/', 'RootController@showHome');
 Route::get('/login', 'Auth\AuthController@getLogin'); # Show login form
 Route::post('/login', 'Auth\AuthController@postLogin'); # Process login form
 Route::get('/logout', 'Auth\AuthController@getLogout'); # Process logout
-Route::get('/logout/confirm', 'Auth\AuthController@confirmLogout'); # Process logout
+Route::get('/logout/confirm', 'Auth\AuthController@confirmLogout'); # Confirm logout
 Route::get('/register', 'Auth\AuthController@getRegister'); # Show registration form
 Route::post('/register', 'Auth\AuthController@postRegister'); # Process registration form
 
