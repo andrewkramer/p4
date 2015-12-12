@@ -29,12 +29,18 @@ class CharactersController extends Controller {
     public function showCharacter($timeline_id, $character_id) {
         $character = \App\Character::where('id', '=', $character_id)
 			->first(); 
+		$created_by = \App\User::where('id', '=', $character->created_by)
+			->first();
+		$last_modified_by = \App\User::where('id', '=', $character->last_modified_by)
+			->first();
 			
 		$timeline = \App\Timeline::where('id', '=', $timeline_id)
 			->first();
 
         return view('characters.showCharacter')
 			->with('character', $character)
+			->with('created_by', $created_by)
+			->with('last_modified_by', $last_modified_by)
 			->with('timeline', $timeline);
     }
 	

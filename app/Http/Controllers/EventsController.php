@@ -19,7 +19,11 @@ class EventsController extends Controller {
     */
     public function showEvent($timeline_id, $event_id) {
         $event = \App\Event::where('id', '=', $event_id)
-			->first(); 
+			->first();
+		$created_by = \App\User::where('id', '=', $event->created_by)
+			->first();
+		$last_modified_by = \App\User::where('id', '=', $event->last_modified_by)
+			->first();
 			
 		$event_characters = array();
 		foreach($event->characters as $character) {
@@ -38,6 +42,8 @@ class EventsController extends Controller {
 
         return view('events.showEvent')
 			->with('event', $event)
+			->with('created_by', $created_by)
+			->with('last_modified_by', $last_modified_by)
 			->with('event_characters', $event_characters)
 			->with('event_locations', $event_locations)
 			->with('timeline', $timeline);

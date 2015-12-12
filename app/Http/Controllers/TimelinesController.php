@@ -19,7 +19,11 @@ class TimelinesController extends Controller {
     */
     public function showTimeline($timeline_id) {
         $timeline = \App\Timeline::where('id', '=', $timeline_id)
-			->first(); 
+			->first();
+		$created_by = \App\User::where('id', '=', $timeline->created_by)
+			->first();
+		$last_modified_by = \App\User::where('id', '=', $timeline->last_modified_by)
+			->first();
 		
 		$timeline_events = $timeline->event()
 			->orderBy('start_date')
@@ -27,6 +31,8 @@ class TimelinesController extends Controller {
 
         return view('timelines.showTimeline')
 			->with('timeline', $timeline)
+			->with('created_by', $created_by)
+			->with('last_modified_by', $last_modified_by)
 			->with('timeline_events', $timeline_events);
     }
 	

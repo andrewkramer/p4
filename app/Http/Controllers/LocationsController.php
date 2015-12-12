@@ -28,13 +28,19 @@ class LocationsController extends Controller {
     */
     public function showLocation($timeline_id, $location_id) {
         $location = \App\Location::where('id', '=', $location_id)
-			->first(); 
+			->first();
+		$created_by = \App\User::where('id', '=', $location->created_by)
+			->first();
+		$last_modified_by = \App\User::where('id', '=', $location->last_modified_by)
+			->first();
 			
 		$timeline = \App\Timeline::where('id', '=', $timeline_id)
 			->first();
 
         return view('locations.showLocation')
 			->with('location', $location)
+			->with('created_by', $created_by)
+			->with('last_modified_by', $last_modified_by)
 			->with('timeline', $timeline);
     }
 	

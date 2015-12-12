@@ -40,13 +40,13 @@
 	
 	<div class='row auditInfo'>
 		<div class='col-md-6'>
-			Created by: {{ $timeline->created_by }}
+			Created by: {{ $created_by->email }}
 		</div>
 		<div class='col-md-6'>
 			Created on: {{ $timeline->created_at }}
 		</div>
 		<div class='col-md-6'>
-			Last Updated by: {{ $timeline->last_modified_by }}
+			Last Updated by: {{ $last_modified_by->email }}
 		</div>
 		<div class='col-md-6'>
 			Last Updated on: {{ $timeline->updated_at }}

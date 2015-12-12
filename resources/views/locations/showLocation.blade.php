@@ -13,13 +13,13 @@
 	<p>{{ $location->description }}</p>
 	<div class='row auditInfo'>
 		<div class='col-md-6'>
-			Created by: {{ $location->created_by }}
+			Created by: {{ $created_by->email }}
 		</div>
 		<div class='col-md-6'>
 			Created on: {{ $location->created_at }}
 		</div>
 		<div class='col-md-6'>
-			Last Updated by: {{ $location->last_modified_by }}
+			Last Updated by: {{ $last_modified_by->email }}
 		</div>
 		<div class='col-md-6'>
 			Last Updated on: {{ $location->updated_at }}

@@ -10,17 +10,17 @@
 			<button class="btn btn-primary">Edit Character</button>
 		</form>
 	@endif
-	<h4>{{ $character->race }}<h4>
+	<h4>{{ $character->race }}</h4>
 	<p>{{ $character->biography }}</p>
 	<div class='row auditInfo'>
 		<div class='col-md-6'>
-			Created by: {{ $character->created_by }}
+			Created by: {{ $created_by->email }}
 		</div>
 		<div class='col-md-6'>
 			Created on: {{ $character->created_at }}
 		</div>
 		<div class='col-md-6'>
-			Last Updated by: {{ $character->last_modified_by }}
+			Last Updated by: {{ $last_modified_by->email }}
 		</div>
 		<div class='col-md-6'>
 			Last Updated on: {{ $character->updated_at }}
