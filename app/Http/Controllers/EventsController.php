@@ -150,11 +150,13 @@ class EventsController extends Controller {
 					->with('locations', $locations)
 					->with('timeline', $timeline);
 			} else { // Else submit form	
+					$user = \Auth::user();
 				
 					$event->name = $request -> input('name');
 					$event->start_date = $request -> input('start_date');
 					$event->end_date = $request -> input('end_date');
 					$event->description = $request -> input('description');
+					$event->last_modified_by = $user->id;
 					
 					$event->save();
 					

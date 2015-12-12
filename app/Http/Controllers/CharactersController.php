@@ -91,17 +91,19 @@ class CharactersController extends Controller {
 					->with('character', $character)
 					->with('timeline', $timeline);
 			} else {	
+				$user = \Auth::user();
 				
-					$character->name = $request -> input('name');
-					$character->race = $request -> input('race');
-					$character->biography = $request -> input('biography');
+				$character->name = $request -> input('name');
+				$character->race = $request -> input('race');
+				$character->biography = $request -> input('biography');
+				$character->last_modified_by = $user->id;
 
-					$character->save();
+				$character->save();
 
-					return view('characters.editCharacter')
-						->with('showForm', 'false')
-						->with('character', $character)
-						->with('timeline', $timeline);
+				return view('characters.editCharacter')
+					->with('showForm', 'false')
+					->with('character', $character)
+					->with('timeline', $timeline);
 				
 			}
 		} else {

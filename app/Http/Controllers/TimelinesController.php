@@ -76,9 +76,12 @@ class TimelinesController extends Controller {
 					->with('showForm', 'true')
 					->with('timeline', $timeline)
 					->with('timeline_events', $timeline_events);
-			} else { // Else submit form	
+			} else { // Else submit form
+				$user = \Auth::user();
+			
 				$timeline->name = $request -> input('name');
 				$timeline->description = $request -> input('description');
+				$timeline->last_modified_by = $user->id;
 				
 				$timeline->save();
 				

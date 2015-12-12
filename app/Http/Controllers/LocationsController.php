@@ -90,16 +90,18 @@ class LocationsController extends Controller {
 					->with('location', $location)
 					->with('timeline', $timeline);
 			} else {	
+				$user = \Auth::user();
 				
-					$location->name = $request -> input('name');
-					$location->description = $request -> input('description');
+				$location->name = $request -> input('name');
+				$location->description = $request -> input('description');
+				$location->last_modified_by = $user->id;
 
-					$location->save();
+				$location->save();
 
-					return view('locations.editLocation')
-						->with('showForm', 'false')
-						->with('location', $location)
-						->with('timeline', $timeline);
+				return view('locations.editLocation')
+					->with('showForm', 'false')
+					->with('location', $location)
+					->with('timeline', $timeline);
 				
 			}
 		} else {
