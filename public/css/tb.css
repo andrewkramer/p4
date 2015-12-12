@@ -17,7 +17,8 @@ header {
 	border: 3px groove grey;
 	text-align: center;
 	font-family: serif;
-	color: #99FF99;
+	color: #006600;
+	text-shadow: 1px 1px 2px #000000, 0 0 3px #001A00;
 }
 
 aside {
@@ -52,22 +53,11 @@ footer {
 .databaseList {
 	margin-top: 15px;
 }
-/*
-.password {
-	text-align: center;
-}
-.genResult >h2{
-	font-family: "Arial", sans-serif;
+
+.submit_error {
+	color: #B30000;
 }
 
-.right {
-	float: right;
-}
-
-.radio {
-	margin-top: 0px;
-}
-*/
 .auditInfo {
 	margin-top: 15px;
 	font-size: 12px;
