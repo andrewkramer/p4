@@ -13,7 +13,9 @@ class EventsTableSeeder extends Seeder
     {
         DB::table('events')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'created_by' => 2,
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'last_modified_by' => 2,
 			'name' => 'Rule of William the Conqueror',
 			'start_date' => '1066-12-25',
 			'end_date' => '1087-09-09',
@@ -23,7 +25,9 @@ class EventsTableSeeder extends Seeder
 		
 		DB::table('events')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'created_by' => 2,
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'last_modified_by' => 2,
 			'name' => 'Rule of William Rufus',
 			'start_date' => '1066-12-25',
 			'end_date' => '1100-08-02',
@@ -33,7 +37,9 @@ class EventsTableSeeder extends Seeder
 		
 		DB::table('events')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'created_by' => 1,
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'last_modified_by' => 1,
 			'name' => 'Battle of Hastings',
 			'start_date' => '1066-10-14',
 			'end_date' => '1066-10-14',
@@ -43,7 +49,9 @@ class EventsTableSeeder extends Seeder
 		
 		DB::table('events')->insert([
 			'created_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'created_by' => 1,
 			'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
+			'last_modified_by' => 1,
 			'name' => 'Battle of Agincourt',
 			'start_date' => '1415-10-25',
 			'end_date' => '1415-10-25',
