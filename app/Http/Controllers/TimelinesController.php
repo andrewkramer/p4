@@ -39,6 +39,11 @@ class TimelinesController extends Controller {
 				->with('showForm', 'true');
 		} else {
 			if ( \Auth::check() ) {
+				// Validate the request data
+				//$this->validate($request, [
+				//	'name' => 'required',
+				//]);
+				
 				$timeline = new \App\Timeline();
 				$user = \Auth::user();
 
@@ -76,6 +81,11 @@ class TimelinesController extends Controller {
 					->with('timeline', $timeline)
 					->with('timeline_events', $timeline_events);
 			} else { // Else submit form
+				// Validate the request data
+				$this->validate($request, [
+					'name' => 'required',
+				]);
+			
 				$user = \Auth::user();
 			
 				$timeline->name = $request -> input('name');

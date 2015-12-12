@@ -57,6 +57,11 @@ class LocationsController extends Controller {
 				->with('timeline', $timeline);
 		} else {
 			if ( \Auth::check() ) {
+				// Validate the request data
+				$this->validate($request, [
+					'name' => 'required',
+				]);
+				
 				$location = new \App\Location();
 				$user = \Auth::user();
 
@@ -95,7 +100,12 @@ class LocationsController extends Controller {
 					->with('showForm', 'true')
 					->with('location', $location)
 					->with('timeline', $timeline);
-			} else {	
+			} else {
+				// Validate the request data
+				$this->validate($request, [
+					'name' => 'required',
+				]);
+			
 				$user = \Auth::user();
 				
 				$location->name = $request -> input('name');

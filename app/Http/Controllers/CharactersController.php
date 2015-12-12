@@ -57,6 +57,11 @@ class CharactersController extends Controller {
 				->with('timeline', $timeline);
 		} else {
 			if ( \Auth::check() ) {
+				// Validate the request data
+				$this->validate($request, [
+					'name' => 'required',
+				]);
+				
 				$character = new \App\Character();
 				$user = \Auth::user();
 
@@ -96,7 +101,12 @@ class CharactersController extends Controller {
 					->with('showForm', 'true')
 					->with('character', $character)
 					->with('timeline', $timeline);
-			} else {	
+			} else {
+				// Validate the request data
+				$this->validate($request, [
+					'name' => 'required',
+				]);
+			
 				$user = \Auth::user();
 				
 				$character->name = $request -> input('name');

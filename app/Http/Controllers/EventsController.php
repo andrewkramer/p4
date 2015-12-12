@@ -66,6 +66,14 @@ class EventsController extends Controller {
 				->with('timeline', $timeline);
 		} else {
 			if ( \Auth::check() ) {
+				
+				// Validate the request data
+				//$this->validate($request, [
+				//	'name' => 'required',
+				//	'start_date' => 'required',
+				//	'end_date' => 'required',
+				//]);
+				
 				$user = \Auth::user();
 				$event = new \App\Event();
 
@@ -149,7 +157,15 @@ class EventsController extends Controller {
 					->with('characters', $characters)
 					->with('locations', $locations)
 					->with('timeline', $timeline);
-			} else { // Else submit form	
+			} else { // Else submit form
+
+				// Validate the request data
+				//$this->validate($request, [
+				//	'name' => 'required',
+				//	'start_date' => 'required|date',
+				//	'end_date' => 'required|date',
+				//]);
+			
 					$user = \Auth::user();
 				
 					$event->name = $request -> input('name');
