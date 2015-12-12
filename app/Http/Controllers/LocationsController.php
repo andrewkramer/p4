@@ -50,19 +50,25 @@ class LocationsController extends Controller {
 				->with('showForm', 'true')
 				->with('timeline', $timeline);
 		} else {
-			
-			$location = new \App\Location();
+			if ( \Auth::check() ) {
+				$location = new \App\Location();
+				$user = \Auth::user();
 
-			$location->name = $request -> input('name');
-			$location->description = $request -> input('description');
-			$location->timeline_id = $timeline_id;
+				$location->name = $request -> input('name');
+				$location->description = $request -> input('description');
+				$location->timeline_id = $timeline_id;
+				$location->created_by = $user->id;
+				$location->last_modified_by = $user->id;
 
-			$location->save();
+				$location->save();
 
-			return view('locations.newLocation')
-				->with('showForm', 'false')
-				->with('location', $location)
-				->with('timeline', $timeline);
+				return view('locations.newLocation')
+					->with('showForm', 'false')
+					->with('location', $location)
+					->with('timeline', $timeline);
+			} else {
+					return 'Access Denied';
+			}
 		}
     }
 

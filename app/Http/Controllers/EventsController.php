@@ -65,8 +65,8 @@ class EventsController extends Controller {
 				->with('locations', $locations)
 				->with('timeline', $timeline);
 		} else {
-			#if ( \Auth::check() ) {
-			#	$user = \Auth::user();
+			if ( \Auth::check() ) {
+				$user = \Auth::user();
 				$event = new \App\Event();
 
 				$event->name = $request -> input('name');
@@ -74,7 +74,8 @@ class EventsController extends Controller {
 				$event->end_date = $request -> input('end_date');
 				$event->description = $request -> input('description');
 				$event->timeline_id = $timeline_id;
-			#	$event->created_by = $user -> name;
+				$event->created_by = $user->id;
+				$event->last_modified_by = $user->id;
 
 				$event->save();
 				
@@ -100,9 +101,9 @@ class EventsController extends Controller {
 					->with('showForm', 'false')
 					->with('event', $event)
 					->with('timeline', $timeline);
-			#} else {
-			#		return 'Access Denied';
-			#}
+			} else {
+					return 'Access Denied';
+			}
 		}
     }
 

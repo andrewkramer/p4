@@ -50,20 +50,26 @@ class CharactersController extends Controller {
 				->with('showForm', 'true')
 				->with('timeline', $timeline);
 		} else {
-			
-			$character = new \App\Character();
+			if ( \Auth::check() ) {
+				$character = new \App\Character();
+				$user = \Auth::user();
 
-			$character->name = $request -> input('name');
-			$character->race = $request -> input('race');
-			$character->biography = $request -> input('biography');
-			$character->timeline_id = $timeline_id;
+				$character->name = $request -> input('name');
+				$character->race = $request -> input('race');
+				$character->biography = $request -> input('biography');
+				$character->timeline_id = $timeline_id;
+				$character->created_by = $user->id;
+				$character->last_modified_by = $user->id;
 
-			$character->save();
+				$character->save();
 
-			return view('characters.newCharacter')
-				->with('showForm', 'false')
-				->with('character', $character)
-				->with('timeline', $timeline);
+				return view('characters.newCharacter')
+					->with('showForm', 'false')
+					->with('character', $character)
+					->with('timeline', $timeline);
+			} else {
+					return 'Access Denied';
+			}
 		}
     }
 

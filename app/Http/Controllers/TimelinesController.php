@@ -20,12 +20,10 @@ class TimelinesController extends Controller {
     public function showTimeline($timeline_id) {
         $timeline = \App\Timeline::where('id', '=', $timeline_id)
 			->first(); 
-			
-		$timeline_events = array();
-		foreach($timeline->event as $event) {
-			$timeline_events[] = $event;
-		}
-
+		
+		$timeline_events = $timeline->event()
+			->orderBy('start_date')
+			->get();
 
         return view('timelines.showTimeline')
 			->with('timeline', $timeline)
@@ -41,17 +39,24 @@ class TimelinesController extends Controller {
 			return view('timelines.newTimeline')
 				->with('showForm', 'true');
 		} else {
-			
-			$timeline = new \App\Timeline();
+			if ( \Auth::check() ) {
+				$timeline = new \App\Timeline();
+				$user = \Auth::user();
 
-			$timeline->name = $request -> input('name');
-			$timeline->description = $request -> input('description');
+				$timeline->name = $request -> input('name');
+				$timeline->description = $request -> input('description');
+				$timeline->user_id = $user->id;
+				$timeline->created_by = $user->id;
+				$timeline->last_modified_by = $user->id;
 
-			$timeline->save();
+				$timeline->save();
 
-			return view('timelines.newTimeline')
-				->with('showForm', 'false')
-				->with('timeline', $timeline);
+				return view('timelines.newTimeline')
+					->with('showForm', 'false')
+					->with('timeline', $timeline);
+			} else {
+					return 'Access Denied';
+			}
 		}
     }
 
@@ -62,10 +67,9 @@ class TimelinesController extends Controller {
 		$timeline = \App\Timeline::where('id', '=', $timeline_id)
 			->first(); 
 			
-		$timeline_events = array();
-		foreach($timeline->event as $event) {
-			$timeline_events[] = $event;
-		}
+		$timeline_events = $timeline->event()
+			->orderBy('start_date')
+			->get();
 		
         if ($request -> input('showForm') == 'true') {
 				return view('timelines.editTimeline')
