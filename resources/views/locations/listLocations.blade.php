@@ -19,8 +19,10 @@
 		</form>
 	@endif
 	<div class='databaseList'>
+		<ul>
 		@foreach ($locations as $location)
 			<li><a href='/timelines/{{ $timeline->id }}/locations/{{ $location->id }}'>{{ $location->name }}</a></li>
 		@endforeach
+		</ul>
 	</div>
 @stop

@@ -24,14 +24,18 @@
 	<div class='databaseList'>
 		@if (Auth::check())
 			<h4>Your Timeline Projects</h4>
+			<ul>
 			@foreach ($users_timelines as $users_timeline)
 				<li><a href='/timelines/{{ $users_timeline->id }}'>{{ $users_timeline->name }}</a></li>
 			@endforeach
+			</ul>
 		@endif
 		
 		<h4>All Timeline Projects</h4>
+		<ul>
 		@foreach ($timelines as $timeline)
 			<li><a href='/timelines/{{ $timeline->id }}'>{{ $timeline->name }}</a></li>
 		@endforeach
+		</ul>
 	</div>
 @stop
