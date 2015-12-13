@@ -17,7 +17,7 @@ TestUser
 
 
 ### Demo
-[Jing Recording](http://screencast.com/t/rnQwa6OrMGq)
+[Jing Recording](http://screencast.com/t/DDvg6HgroS5)
 
 ### Citations
 * Bootstrap css and javascript: [getbootstrap.com](http://getbootstrap.com/)
