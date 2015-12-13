@@ -3,7 +3,7 @@
 
 [p4.eruditus12.xyz](http://p4.eruditus12.xyz)
 
-This site allows users to create, modify, and view custom timelines using wiki-style collaboration. Anyone can view any timeline, but only registered users can create and edit timelines. Each timeline contains characters, locations, and events. Characters and locations can be linked to ar removed from each event. 
+This site allows users to create, modify, and view custom timelines using wiki-style collaboration. Anyone can view any timeline, but only registered users can create and edit timelines. Each timeline contains characters, locations, and events. Characters and locations can be linked to and removed from each event. 
 
 The next version of this project would allow images to be uploaded for characters, locations, and events; and would allow timeline events to be filtered by character or location.
 
